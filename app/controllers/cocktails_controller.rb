@@ -1,8 +1,9 @@
 class CocktailsController < ApplicationController
+  # shows all cocktails
   def index
-    @cocktail = Cocktail.all
+    @cocktails = Cocktail.all
   end
-
+  # shows one cocktail
   def show
     @cocktail = Cocktail.find(params[:id])
   end
@@ -12,16 +13,18 @@ class CocktailsController < ApplicationController
   end
 
   def create
-     @cocktail = Cocktail.new(cocktail_params)
-     if @cocktail.save
+    @cocktail = Cocktail.new(cocktail_params)
+    if @cocktail.save
       redirect_to @cocktail
-     else
-      render
+    else
+      render :new
+    end
   end
 
   private
 
+  # these attributes must be present when a new cocktail is being craeted. (create method)
   def cocktail_params
-    params.require(cocktail).permit(:name)
+    params.require(:cocktail).permit(:name)
   end
 end

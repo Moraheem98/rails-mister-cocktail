@@ -1,0 +1,9 @@
+<h1>Choose your dose for <%= @cocktail.name %></h1>
+
+<%= simple_form_for([@cocktail, @dose]) do |f| %>
+  <%= f.input :description %>
+  <%= f.association :ingredient %> <!--renders a drop drownlist-->
+  <%= f.submit %>
+<% end %>
+
+<%= link_to 'Back', cocktails_path %>
