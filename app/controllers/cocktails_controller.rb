@@ -25,6 +25,6 @@ class CocktailsController < ApplicationController
 
   # these attributes must be present when a new cocktail is being craeted. (create method)
   def cocktail_params
-    params.require(:cocktail).permit(:name)
+    params.require(:cocktail).permit(:name, :photo)
   end
 end
